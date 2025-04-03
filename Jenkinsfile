@@ -21,7 +21,13 @@ pipeline {
     }
     post {
         always{
-            sh "echo thhis will run always"
+            echo "thhis will run always"
+        }
+        success{
+            echo "this will run on success"
+        }
+        failure{
+            echo "this will run at failure"
         }
     }
 }
