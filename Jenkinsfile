@@ -19,4 +19,9 @@ pipeline {
             }
         }
     }
+    post {
+        always{
+            sh "echo thhis will run always"
+        }
+    }
 }
