@@ -3,7 +3,7 @@ pipeline {
         label 'agent-1-lablel'
     }
      options{
-        timeout(time: 100, unit: 'SECONDS')
+        timeout(time: 20, unit: 'SECONDS')
         disableConcurrentBuilds()
         // retry(1)
     }
@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
                     sh 'echo this is deploy'
-                    // error "this will be failed"
+                    error "this will be failed"
             }
         }
     }
