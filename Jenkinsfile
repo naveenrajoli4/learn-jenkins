@@ -1,11 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        label 'agent-1-lablel'
+    }
     stages {
         stage('Build') {
             steps {
-
                     sh "echo this is build"
-
             }
         }
         stage('Test') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                    sh "echo thiss is deploy"
+                    sh "echo this is deploy"
                     // error "this will be failed"
             }
         }
