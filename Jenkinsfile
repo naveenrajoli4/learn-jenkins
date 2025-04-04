@@ -2,34 +2,40 @@ pipeline {
     agent {
         label 'agent-1-lablel'
     }
+     options{
+        timeout(time: 10, unit: 'SECONDS')
+        // disableConcurrentBuilds()
+        // retry(1)
+    }
     stages {
         stage('Build') {
             steps {
-                    sh "echo this is build"
+                    sh 'echo this is build'
+                    sh 'sleep 5'
             }
         }
         stage('Test') {
             steps {
-                    sh "echo this is test"
+                    sh 'echo this is test'
             }
         }
         stage('Deploy') {
             steps {
-                    sh "echo this is deploy"
+                    sh 'echo this is deploy'
                     // error "this will be failed"
             }
         }
     }
     post {
         always{
-            echo "thhis will run always"
+            echo 'this will run always'
             deleteDir()
         }
         success{
-            echo "this will run on success"
+            echo 'this will run on success'
         }
         failure{
-            echo "this will run at failure"
+            echo 'this will run at failure'
         }
     }
 }
