@@ -3,7 +3,7 @@ pipeline {
         label 'agent-1-lablel'
     }
      options{
-        timeout(time: 20, unit: 'SECONDS')
+        timeout(time: 20, unit: 'MINUTES')
         disableConcurrentBuilds()
         // retry(1)
     }
@@ -18,7 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                     sh 'echo this is build'
-                    sh 'sleep 10'
+                    // sh 'sleep 10'
             }
         }
         stage('Test') {
@@ -40,6 +40,19 @@ pipeline {
                 echo "Toggle: ${params.TOGGLE}"
                 echo "Choice: ${params.CHOICE}"
                 echo "Password: ${params.PASSWORD}"  
+            }
+        }
+        stage('Approval'){
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
             }
         }
     }
