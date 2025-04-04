@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                    sh 'echo this is testtttttttttttt'
+                    sh 'echo this is test'
                     echo "Hello ${params.PERSON}"
             }
         }
