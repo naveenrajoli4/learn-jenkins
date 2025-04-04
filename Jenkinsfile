@@ -3,7 +3,7 @@ pipeline {
         label 'agent-1-lablel'
     }
      options{
-        timeout(time: 10, unit: 'SECONDS')
+        timeout(time: 100, unit: 'SECONDS')
         disableConcurrentBuilds(1)
         // retry(1)
     }
