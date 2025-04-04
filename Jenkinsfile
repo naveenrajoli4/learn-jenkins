@@ -28,9 +28,12 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                expression { env.GIT_BRANCH != 'origin/main' }
+            }
             steps {
-                    sh 'echo this is deploy'
-                    // error "this will be failed"
+                    sh 'echo This is deploy'
+                    //error 'pipeline failed'
             }
         }
         stage('Print Params'){
