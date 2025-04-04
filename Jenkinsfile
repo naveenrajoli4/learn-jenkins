@@ -23,7 +23,7 @@ pipeline {
     post {
         always{
             echo "thhis will run always"
-            deleteDir()
+            // deleteDir()
         }
         success{
             echo "this will run on success"
